@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 12.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="12.0">
+ <Targets>
+  <Target Name="C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\hotel.exe">
+   <Modules>
+    <Module Name="hotel.exe">
+     <Namespaces>
+      <Namespace Name="hotel">
+       <Types>
+        <Type Name="DataBase" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#Information(hotel.Room,Itenso.TimePeriod.TimeRange)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="189">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.Information(Room, TimeRange)', может содержать следующие переменные 'new string[7][1]', 'range.Start'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#UpdateRoom(hotel.Room)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="127">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="142">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DatabaseDataSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="60" Level="Error">Добавьте реализацию GetObjectData к типу 'DatabaseDataSet'.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="InterTime" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'InterTime', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="NoPerson" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'NoPerson', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RoomInUse" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomInUse', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="RoomReserved" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomReserved', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="WrondPillow" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrondPillow', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="WrongData" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrongData', так как этот тип реализует ISerializable.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240">
+   <Name>Правильно реализуйте ISerializable</Name>
+   <Description>Если тип допускает присваивание к ISerializable, он должен реализовать GetObjectData. Для незапечатанных типов производные типы должны иметь возможность вызывать и переопределять метод GetObjectData.</Description>
+   <Resolution Name="Default">Добавьте реализацию GetObjectData к типу {0}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182342.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="60">Error</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237">
+   <Name>Пометьте типы ISerializable атрибутом SerializableAttribute</Name>
+   <Description>Интерфейс System.Runtime.Serialization.ISerializable дает возможность типу настраивать свою сериализацию, в то время как атрибут Serializable дает возможность исполняющей среде опознавать этот тип как сериализуемый.</Description>
+   <Resolution Name="Default">Добавьте [Serializable] к {0}, так как этот тип реализует ISerializable.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182350.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="12.0.0.0" />
+  </Rule>
+  <Rule TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100">
+   <Name>Проверка запросов SQL на уязвимости безопасности</Name>
+   <Description>Командная строка SQL, создаваемая на основе введенных пользователем данных, уязвима к атакам типа "инъекция SQL". Microsoft SQL Server и другие серверы баз данных поддерживают хранимые процедуры и параметризованные SQL-запросы, что снижает риск атак путем внедрения.</Description>
+   <Resolution Name="WithNonLiterals">Строка запроса, переданная {0} в {1}, может содержать следующие переменные {2}. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182310.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="12.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
+ </Localized>
+</FxCopReport>

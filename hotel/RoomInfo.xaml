@@ -1,0 +1,14 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="hotel.RoomInfo"
+        Title="Информация" Height="311" Width="320" Initialized="Window_Initialized" WindowStyle="ToolWindow" ResizeMode="NoResize">
+    <Grid>
+        <GroupBox x:Name="RoomBox" Header="Room" HorizontalAlignment="Left" Height="277" VerticalAlignment="Top" Width="302" Margin="2,0,0,0">
+            <Grid HorizontalAlignment="Left" Height="267" Margin="0,0,-2,-12" VerticalAlignment="Top" Width="282">
+                <Label x:Name="Stat" Content="Status" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.132,0"/>
+                <TextBlock x:Name="tDate" HorizontalAlignment="Left" Margin="6,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="171" Width="266"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

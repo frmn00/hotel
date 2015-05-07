@@ -1,0 +1,7 @@
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\Pub\Desktop.Release\Itenso.TimePeriod.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\Pub\Desktop.Release\de\Itenso.TimePeriod.resources.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\TimePeriod\obj\Desktop.Release\Release\Itenso.TimePeriod.Strings.resources
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\TimePeriod\obj\Desktop.Release\Release\Itenso.TimePeriod.Strings.de.resources
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\TimePeriod\obj\Desktop.Release\Release\TimePeriod.Desktop.csproj.GenerateResource.Cache
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\TimePeriod\obj\Desktop.Release\Release\de\Itenso.TimePeriod.resources.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\time_period\TimePeriod\obj\Desktop.Release\Release\Itenso.TimePeriod.dll

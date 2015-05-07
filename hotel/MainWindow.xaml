@@ -1,0 +1,42 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:hotel" x:Class="hotel.MainWindow"
+        Title="Hotel" Height="477" Width="902" Closing="Window_Closing" Initialized="Window_Initialized" ResizeMode="NoResize">
+    <Window.Background>
+        <ImageBrush ImageSource="C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\backgrnd.png"/>
+    </Window.Background>
+
+    <Grid x:Name="palet" Background="White">
+
+        <Grid.Resources>
+            <ContextMenu x:Key="cMenu" >
+                <MenuItem Header="Помыть" Click="cleanRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Заселить" Click="useRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Забронировать" Click="resRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Освободить" Click="freeRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Снять бронь" Click="dResRoom" HorizontalAlignment="Left"/>
+            </ContextMenu>
+        </Grid.Resources>
+        <Menu Background="#FFF0EDED" Height="21" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Загрузить базу"  Click="doMagic"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Выход" Click="exit"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid Height="419" VerticalAlignment="Bottom">
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\backgrnd.png"/>
+            </Grid.Background>
+            <TextBlock x:Name="Room5" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="33,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="5" MouseLeftButtonUp="click" FontWeight="Bold" FontSize="30" FontFamily="Segoe Script"><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="207"/></TextBlock>
+            <TextBlock x:Name="Room6" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="253,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="6" MouseLeftButtonUp="click" FontWeight="Bold" FontSize="30" FontFamily="Segoe Script"><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="208"/></TextBlock>
+            <TextBlock x:Name="Room7" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="471,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="7" MouseLeftButtonUp="click" FontWeight="Bold" FontFamily="Segoe Script" FontSize="30"><Run/><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="20"/><Run Language="ru-ru" Text="9"/></TextBlock>
+            <TextBlock x:Name="Room8" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="674,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="8" OverridesDefaultStyle="True" MouseLeftButtonUp="click" FontWeight="Bold" FontFamily="Segoe Script" FontSize="30" IsManipulationEnabled="True"><Run/><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="210"/></TextBlock>
+            <TextBlock x:Name="Room4" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="674,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="4" MouseLeftButtonUp="click" FontWeight="Bold" FontFamily="Segoe Script" FontSize="30"><Run/><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="2"/><Run Text="06"/></TextBlock>
+            <TextBlock x:Name="Room3" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="471,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" OpacityMask="White" Uid="3" MouseLeftButtonUp="click" Background="#7FEAEAEA" FontWeight="Bold" FontFamily="Segoe Script" FontSize="30"><Run/><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="205"/></TextBlock>
+            <TextBlock x:Name="Room1" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" OpacityMask="#FFE2E2E2" Uid="1" Background="#7FEAEAEA" MouseLeftButtonUp="click" Margin="33,64,0,0" FontSize="30" FontFamily="Segoe Script" FontWeight="Bold"><Run/><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="203"/></TextBlock>
+            <TextBlock x:Name="Room2" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="2" MouseLeftButtonUp="click" FontWeight="Bold" Margin="253,64,0,0" FontFamily="Segoe Script" FontSize="30"><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="2"/><Run Text="04"/></TextBlock>
+        </Grid>
+    </Grid>
+</Window>
