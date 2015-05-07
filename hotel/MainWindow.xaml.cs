@@ -72,12 +72,12 @@ namespace hotel
             Object t_obj = true;
             Object f_obj = false;
             var wrd = new MWord.Application();
-            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\templates\_template1.doc");
-            MessageBox.Show(System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc");
-            fn.CopyTo(System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc");               //TODO: переписать нормально!!!
-            fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\_template1.doc");
+            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\_template1.doc");
+            MessageBox.Show(System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc");
+            fn.CopyTo(System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc");               //TODO: переписать нормально!!!
+            fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\_template1.doc");
             fn = null;
-            Object path = System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc";
+            Object path = System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc";
             try
             {
                var doc = wrd.Documents.Add(path, miss, miss, miss);
