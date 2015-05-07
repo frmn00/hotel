@@ -12,16 +12,16 @@
          <Members>
           <Member Name="#Information(hotel.Room,Itenso.TimePeriod.TimeRange)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="189">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.Information(Room, TimeRange)', может содержать следующие переменные 'new string[7][1]', 'range.Start'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="234">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.Information(Room, TimeRange)', может содержать следующие переменные 'new string[7][1]', 'range.Start'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#UpdateRoom(hotel.Room)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="DependsOnFix">
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="127">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
-             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="142">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+            <Message TypeName="Проверка запросов SQL на уязвимости безопасности" Category="Microsoft.Security" CheckId="CA2100" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="DependsOnFix">
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="172">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
+             <Issue Name="WithNonLiterals" Certainty="75" Level="Warning" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="MainWindow.xaml.cs" Line="187">Строка запроса, переданная 'SqlCommand.SqlCommand(string, SqlConnection)' в 'DataBase.UpdateRoom(Room)', может содержать следующие переменные 'base.ToString()'. Если любая из этих переменных может поступать из вводимых пользователем данных, рассмотрите возможность использования хранимой процедуры или параметризованного запроса SQL вместо сборки запроса с помощью конкатенации строк.</Issue>
             </Message>
            </Messages>
           </Member>
@@ -29,49 +29,49 @@
         </Type>
         <Type Name="DatabaseDataSet" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="ImplementISerializableCorrectly" Category="Microsoft.Usage" CheckId="CA2240" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="60" Level="Error">Добавьте реализацию GetObjectData к типу 'DatabaseDataSet'.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="InterTime" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'InterTime', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="NoPerson" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'NoPerson', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="RoomInUse" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomInUse', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="RoomReserved" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomReserved', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="WrondPillow" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrondPillow', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="WrongData" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 13:07:27Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-05-07 20:00:29Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrongData', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>

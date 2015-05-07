@@ -23,6 +23,7 @@ using System.Windows.Threading;
 using Itenso.TimePeriod;
 using MWord = Microsoft.Office.Interop.Word;
 using MExcel = Microsoft.Office.Interop.Excel;
+using System.Reflection;
 
 namespace hotel
 {
@@ -43,6 +44,50 @@ namespace hotel
     public class InterTime : ApplicationException
     {
 
+    }
+
+    public static class Report
+    {
+
+        private static void replace(string from, string to, ref MWord.Document _document)
+        {
+            object _missingObj = System.Reflection.Missing.Value;
+            object strToFindObj = from;
+            object replaceStrObj = to;
+            MWord.Range wordRange;
+            object replaceTypeObj;
+            replaceTypeObj = MWord.WdReplace.wdReplaceAll;
+            for (int i = 1; i <= _document.Sections.Count; i++)
+            {
+                wordRange = _document.Sections[i].Range;
+                MWord.Find wordFindObj = wordRange.Find;
+                object[] wordFindParameters = new object[15] { strToFindObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, replaceStrObj, replaceTypeObj, _missingObj, _missingObj, _missingObj, _missingObj };
+                wordFindObj.GetType().InvokeMember("Execute", BindingFlags.InvokeMethod, null, wordFindObj, wordFindParameters);
+            }
+            return;
+        }
+
+        public static void ArrivalBlank(Room room){
+            Object miss = System.Reflection.Missing.Value;
+            Object t_obj = true;
+            Object f_obj = false;
+            var wrd = new MWord.Application();
+            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\templates\_template1.doc");
+            MessageBox.Show(System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc");
+            fn.CopyTo(System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc");               //TODO: переписать нормально!!!
+            fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\_template1.doc");
+            fn = null;
+            Object path = System.AppDomain.CurrentDomain.BaseDirectory + "\anketa" + DateTime.Now.ToFileTime() + ".doc";
+            try
+            {
+               var doc = wrd.Documents.Add(path, miss, miss, miss);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+        }
     }
 
     public struct RoomInformation
@@ -650,8 +695,6 @@ namespace hotel
         public MainWindow()
         {
             InitializeComponent();
-            var myapp = new MWord.Application();
-            myapp.Documents.Add(Type.Missing, false, MWord.WdNewDocumentType.wdNewBlankDocument, true);
         }
 
         public void InitCls()
@@ -665,6 +708,7 @@ namespace hotel
             rooms[7].SetObj(this.Room7);
             rooms[8].SetObj(this.Room8);
             DataBase.Connect();
+            Report.ArrivalBlank(rooms[1]);
          }
 
         public void serial(Room room)
