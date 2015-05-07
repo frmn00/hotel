@@ -447,6 +447,7 @@ namespace hotel
                 PayRoom(pay);
             }
             serial(this);
+            //gittest
         }
 
         public void FreeRoom()
