@@ -1,7 +1,6 @@
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\bin\Debug\hotel.exe.config
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\bin\Debug\hotel.exe
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\bin\Debug\hotel.pdb
-c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\hotel.csprojResolveAssemblyReference.cache
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\MainWindow.baml
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\MainWindow.g.cs
 c:\users\freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\App.g.cs
@@ -29,3 +28,35 @@ C:\Users\Freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\Add
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\hotel_Content.g.cs
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\Database.mdf
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\Database_log.ldf
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.exe.config
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.exe
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.pdb
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\Database.mdf
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\Database_log.ldf
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.exe
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.pdb
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.exe.CodeAnalysisLog.xml
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.exe.lastcodeanalysissucceeded
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\Itenso.TimePeriod.dll
+C:\Users\Sony\Documents\Git\hotel\bin\Debug\de\Itenso.TimePeriod.resources.dll
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.csprojResolveAssemblyReference.cache
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\AddClient.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DatePick.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DateRes.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DeleteReserve.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\RoomInfo.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\AddClient.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DatePick.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DateRes.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\DeleteReserve.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\MainWindow.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\RoomInfo.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\App.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel_Content.g.cs
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel_MarkupCompile.cache
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel_MarkupCompile.lref
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\MainWindow.baml
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.g.resources
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.Properties.Resources.resources
+C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.csproj.GenerateResource.Cache
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\hotel.csprojResolveAssemblyReference.cache

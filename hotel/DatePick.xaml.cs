@@ -44,8 +44,8 @@ namespace hotel
             try
             {
                 if (Client.SelectedItem == null) throw new NoPerson();
-                room.UseRoom(DateTime.Now, dout, System.Convert.ToInt32(Sum.Text), System.Convert.ToInt32(Pay.Text));
                 room.Person = (Person)Client.SelectedItem;
+                room.UseRoom(DateTime.Now, dout, System.Convert.ToInt32(Sum.Text), System.Convert.ToInt32(Pay.Text));
                 this.Close();
             }
             catch (InterTime)
@@ -93,6 +93,7 @@ namespace hotel
             if (cls.DialogResult == true)
             {
                 Client.Items.Add(cls.returnPers());
+                
             }
         }
 

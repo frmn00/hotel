@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:hotel" x:Class="hotel.MainWindow"
         Title="Hotel" Height="477" Width="902" Closing="Window_Closing" Initialized="Window_Initialized" ResizeMode="NoResize">
     <Window.Background>
-        <ImageBrush ImageSource="C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\backgrnd.png"/>
+        <ImageBrush ImageSource="backgrnd.png"/>
     </Window.Background>
 
     <Grid x:Name="palet" Background="White">
@@ -24,10 +24,13 @@
                 <Separator></Separator>
                 <MenuItem Header="Выход" Click="exit"></MenuItem>
             </MenuItem>
+            <MenuItem Header="Отчеты">
+                <MenuItem Header="Отчет по использованию"  Click="HistoryReport"></MenuItem>
+            </MenuItem>
         </Menu>
         <Grid Height="419" VerticalAlignment="Bottom">
             <Grid.Background>
-                <ImageBrush ImageSource="C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\backgrnd.png"/>
+                <ImageBrush ImageSource="backgrnd.png"/>
             </Grid.Background>
             <TextBlock x:Name="Room5" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="33,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="5" MouseLeftButtonUp="click" FontWeight="Bold" FontSize="30" FontFamily="Segoe Script"><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="207"/></TextBlock>
             <TextBlock x:Name="Room6" HorizontalAlignment="Left" ContextMenu="{StaticResource cMenu}" Margin="253,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="105" Width="177" TextDecorations="{x:Null}" TextAlignment="Center" Foreground="White" Background="#7FEAEAEA" OpacityMask="White" Uid="6" MouseLeftButtonUp="click" FontWeight="Bold" FontSize="30" FontFamily="Segoe Script"><LineBreak/><Run Language="ru-ru" Text="      "/><Run Text="208"/></TextBlock>

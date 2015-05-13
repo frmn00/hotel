@@ -49,21 +49,15 @@ namespace hotel
     public static class Report
     {
 
-        private static void replace(string from, string to, ref MWord.Document _document)
+        private static void replace(string from, string to, ref MWord.Application wrd)
         {
-            object _missingObj = System.Reflection.Missing.Value;
-            object strToFindObj = from;
-            object replaceStrObj = to;
-            MWord.Range wordRange;
-            object replaceTypeObj;
-            replaceTypeObj = MWord.WdReplace.wdReplaceAll;
-            for (int i = 1; i <= _document.Sections.Count; i++)
-            {
-                wordRange = _document.Sections[i].Range;
-                MWord.Find wordFindObj = wordRange.Find;
-                object[] wordFindParameters = new object[15] { strToFindObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, _missingObj, replaceStrObj, replaceTypeObj, _missingObj, _missingObj, _missingObj, _missingObj };
-                wordFindObj.GetType().InvokeMember("Execute", BindingFlags.InvokeMethod, null, wordFindObj, wordFindParameters);
-            }
+            MWord.Find tf = wrd.Selection.Find;
+            tf.Text = from;
+            tf.ClearFormatting();
+            tf.Replacement.Text = to;
+            tf.Replacement.ClearFormatting();
+            object ro = MWord.WdReplace.wdReplaceOne;
+            tf.Execute(Replace: ref ro, Wrap: MWord.WdFindWrap.wdFindContinue);
             return;
         }
 
@@ -72,21 +66,41 @@ namespace hotel
             Object t_obj = true;
             Object f_obj = false;
             var wrd = new MWord.Application();
-            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\_template1.doc");
-            MessageBox.Show(System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc");
-            fn.CopyTo(System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc");               //TODO: переписать нормально!!!
-            fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\_template1.doc");
-            fn = null;
-            Object path = System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + DateTime.Now.ToFileTime() + ".doc";
+            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\anketa");
+            string pt = System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + room.Person.Name + room.Person.Soname + DateTime.Today.Minute.ToString() + ".doc";
+            fn.CopyTo(pt);              
+            Object path = (Object)pt;
+            MWord.Document doc;
             try
             {
-               var doc = wrd.Documents.Add(path, miss, miss, miss);
+               doc = wrd.Documents.Add(path, miss, miss, miss);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            replace("<name>", room.Person.Name, ref wrd);
+            replace("<soname>", room.Person.Soname, ref wrd);
+            replace("<lname>", room.Person.ThName, ref wrd);
+            replace("<nroom>", room.Id.ToString(), ref wrd);
+            replace("<arrivetime>", room.UsedAt.Start.ToShortDateString(), ref wrd);
+            replace("<bdate>", room.Person.Birthday.ToShortDateString(), ref wrd);
+            replace("<bplace>", room.Person.Pasport.home, ref wrd);
+            replace("<pnum>", room.Person.Pasport.id, ref wrd);
+            replace("<pwhen>", room.Person.Pasport.when.ToShortDateString(), ref wrd);
+            replace("<pby>", room.Person.Pasport.place, ref wrd);
+            replace("<bmonth>", room.Person.Birthday.Month.ToString(), ref wrd);
+            replace("<bbtime>", room.UsedAt.End.ToShortDateString(), ref wrd);
+            wrd.ActiveDocument.SaveAs(pt);
+            wrd.ActiveDocument.Close();
+            wrd.Quit();
+            MessageBox.Show("Отчет " + room.Person.Name + room.Person.Soname + DateTime.Today.Minute.ToString() + ".doc"+ " создан.");
+        }
+
+        public static void UseHistory(Room room)
+        {
+
         }
     }
 
@@ -492,6 +506,7 @@ namespace hotel
                 PayRoom(pay);
             }
             serial(this);
+            Report.ArrivalBlank(this);
             //gittest
         }
 
@@ -522,6 +537,7 @@ namespace hotel
                 this.st_room = stat.FREE;
                 Color();
             }
+            this.num_res--;
             serial(this);
         }
 
@@ -708,8 +724,9 @@ namespace hotel
             rooms[7].SetObj(this.Room7);
             rooms[8].SetObj(this.Room8);
             DataBase.Connect();
-            Report.ArrivalBlank(rooms[1]);
          }
+
+
 
         public void serial(Room room)
         {
@@ -814,6 +831,11 @@ namespace hotel
             else{
                 MessageBox.Show("Нет изменений.");
             }
+        }
+
+        public void ReportHistory(object sender, EventArgs e)
+        {
+
         }
 
         private void Window_Initialized(object sender, EventArgs e)

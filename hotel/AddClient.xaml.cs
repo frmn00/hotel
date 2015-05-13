@@ -10,6 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace hotel
 {
@@ -66,11 +68,22 @@ namespace hotel
             {
                 MessageBox.Show("Неправильно введена дата.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            saveBaseClients(clients, "clients.dat");
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        public void saveBaseClients(List<Person> clients, string filename)
+        {
+            BinaryFormatter format = new BinaryFormatter();
+
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                format.Serialize(fs, clients);
+            }
         }
 
         public Person returnPers()
