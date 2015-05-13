@@ -833,7 +833,7 @@ namespace hotel
             }
         }
 
-        public void ReportHistory(object sender, EventArgs e)
+        public void HistoryReport(object sender, EventArgs e)
         {
 
         }
