@@ -25,7 +25,7 @@
                 <MenuItem Header="Выход" Click="exit"></MenuItem>
             </MenuItem>
             <MenuItem Header="Отчеты">
-                <MenuItem Header="Отчет по использованию"  Click="HistoryReport"></MenuItem>
+                <MenuItem Header="Отчет по использованию"  Click="HistoryReports"></MenuItem>
             </MenuItem>
         </Menu>
         <Grid Height="419" VerticalAlignment="Bottom">

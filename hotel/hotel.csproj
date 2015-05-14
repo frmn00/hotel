@@ -97,6 +97,9 @@
     <Compile Include="DeleteReserve.xaml.cs">
       <DependentUpon>DeleteReserve.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HistoryReport.xaml.cs">
+      <DependentUpon>HistoryReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RoomInfo.xaml.cs">
       <DependentUpon>RoomInfo.xaml</DependentUpon>
     </Compile>
@@ -113,6 +116,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteReserve.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HistoryReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -60,3 +60,5 @@ C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.g.resources
 C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.Properties.Resources.resources
 C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.csproj.GenerateResource.Cache
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\hotel.csprojResolveAssemblyReference.cache
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\HistoryReport.baml
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\HistoryReport.g.cs

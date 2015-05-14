@@ -61,19 +61,65 @@ namespace hotel
             return;
         }
 
+        public static void HistoryReport(List<List<RoomInformation>> info)
+        {
+            //TODO
+        }
+
+        public static void HistoryReport(List<RoomInformation> info)
+        {
+            var exl = new MExcel.Application();
+            exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
+            var sh = exl.Worksheets.get_Item(1);
+            sh.Cells[1, 1] = "Дата:                   ";
+            sh.Cells[1, 2] = "Статус:                 ";
+            sh.Cells[1, 3] = "Долг:                   ";
+            sh.Cells[1, 4] = "ФИО:                    ";
+            sh.Cells[1, 5] = "Бельё:                  ";
+            for (int i = 2; i < info.Count; i++)
+            {
+                sh.Cells[i, 1] = info[i - 2].Date.ToString();
+            }
+            for (int i = 2; i < info.Count; i++)
+            {
+                sh.Cells[i, 2] = info[i - 2].Status;
+            }
+            for (int i = 2; i < info.Count; i++)
+            {
+                sh.Cells[i, 3] = info[i - 2].Debt.ToString();
+            }
+            for (int i = 2; i < info.Count; i++)
+            {
+                sh.Cells[i, 4] = info[i - 2].Name;
+            }
+            for (int i = 2; i < info.Count; i++)
+            {
+                sh.Cells[i, 5] = info[i - 2].Pillows.ToString();
+            }
+            Random rnd = new Random((int)DateTime.Now.ToFileTime());
+            int num = rnd.Next(100);
+            exl.Workbooks[1].SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls");
+            exl.Workbooks[1].Close(); 
+            exl.Quit();
+            MessageBox.Show("Отчет " + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls" + " создан.");
+        }
+
         public static void ArrivalBlank(Room room){
             Object miss = System.Reflection.Missing.Value;
             Object t_obj = true;
             Object f_obj = false;
             var wrd = new MWord.Application();
+            wrd.Visible = true;
+            Random rnd = new Random((int)DateTime.Now.ToFileTime());
+            int num = rnd.Next(100);
+            string pt = System.AppDomain.CurrentDomain.BaseDirectory + "anketa" + room.Person.Name + room.Person.Soname + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".doc";         
             FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\anketa");
-            string pt = System.AppDomain.CurrentDomain.BaseDirectory + "\\anketa" + room.Person.Name + room.Person.Soname + DateTime.Today.Minute.ToString() + ".doc";
-            fn.CopyTo(pt);              
-            Object path = (Object)pt;
+            fn.CopyTo(pt);       
+
             MWord.Document doc;
             try
             {
-               doc = wrd.Documents.Add(path, miss, miss, miss);
+               doc = wrd.Documents.Add(pt, miss, miss, miss);
             }
             catch (Exception ex)
             {
@@ -86,21 +132,16 @@ namespace hotel
             replace("<nroom>", room.Id.ToString(), ref wrd);
             replace("<arrivetime>", room.UsedAt.Start.ToShortDateString(), ref wrd);
             replace("<bdate>", room.Person.Birthday.ToShortDateString(), ref wrd);
-            replace("<bplace>", room.Person.Pasport.home, ref wrd);
+            replace("<home>", room.Person.Pasport.home, ref wrd);
             replace("<pnum>", room.Person.Pasport.id, ref wrd);
             replace("<pwhen>", room.Person.Pasport.when.ToShortDateString(), ref wrd);
             replace("<pby>", room.Person.Pasport.place, ref wrd);
             replace("<bmonth>", room.Person.Birthday.Month.ToString(), ref wrd);
             replace("<bbtime>", room.UsedAt.End.ToShortDateString(), ref wrd);
             wrd.ActiveDocument.SaveAs(pt);
-            wrd.ActiveDocument.Close();
-            wrd.Quit();
-            MessageBox.Show("Отчет " + room.Person.Name + room.Person.Soname + DateTime.Today.Minute.ToString() + ".doc"+ " создан.");
-        }
-
-        public static void UseHistory(Room room)
-        {
-
+           // wrd.ActiveDocument.Close();
+            //wrd.Quit();
+            MessageBox.Show("Отчет " + room.Person.Name + room.Person.Soname + DateTime.Now.ToShortDateString()  + "_" + num.ToString() +".doc" + " создан.");
         }
     }
 
@@ -244,14 +285,16 @@ namespace hotel
 
         public static List<RoomInformation> Information(Room room, TimeRange range)
         {
+            if (!isconnected) Connect();
             List<RoomInformation> result = new List<RoomInformation>();
-            SqlCommand ex = new SqlCommand("Select * From ROOM"+room.Id.ToString()+" Where Date Between '"+range.Start.Date.ToString()+"' AND '"+
-                range.End.Date.ToString()+"'", connection);
+            SqlCommand ex = new SqlCommand("Select * From ROOM" + room.Id.ToString() + " Where Date Between '" + range.Start.Date.ToString("MM.dd.yyyy") + "' AND '" +
+                range.End.Date.ToString("MM.dd.yyyy") + "'", connection);
             using (SqlDataReader rd = ex.ExecuteReader(CommandBehavior.CloseConnection))
             {
+                if (!rd.HasRows) return result;
                 while (rd.Read())
                 {
-                    result.Add(new RoomInformation((DateTime)rd.GetValue(0), (string)rd.GetValue(1), (int)rd.GetValue(2), (string)rd.GetValue(3), (int)rd.GetValue(4)));
+                    result.Add(new RoomInformation((DateTime)rd.GetSqlDateTime(0), (string)rd.GetValue(1), (int)rd.GetValue(2), (string)rd.GetValue(3), (int)rd.GetValue(4)));
                 }
             }
             return result;
@@ -626,6 +669,11 @@ namespace hotel
                 this.is_dirty = false;
             serial(this);
         }
+
+        public override string ToString()
+        {
+            return "Номер " + this.Id.ToString();
+        }
         
     }
 
@@ -833,9 +881,11 @@ namespace hotel
             }
         }
 
-        public void HistoryReport(object sender, EventArgs e)
+        public void HistoryReports(object sender, EventArgs e)
         {
-
+            HistoryReport rep = new HistoryReport(rooms);
+            rep.Owner = this;
+            rep.ShowDialog();
         }
 
         private void Window_Initialized(object sender, EventArgs e)
@@ -872,6 +922,9 @@ namespace hotel
             {
                 this.clients = loadBaseClient();
             }
+            //DateTime bg = new DateTime(2015, 4, 23);
+            //DateTime ed = new DateTime(2015, 5, 15);
+            //Report.HistoryReport(DataBase.Information(rooms[1], new TimeRange(bg, ed)));
         }
 
         private void cleanRoom(object sender, RoutedEventArgs e)
