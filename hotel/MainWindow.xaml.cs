@@ -63,7 +63,62 @@ namespace hotel
 
         public static void HistoryReport(List<List<RoomInformation>> info)
         {
-            //TODO
+            var exl = new MExcel.Application();
+            exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
+            var sh = exl.Worksheets.get_Item(1);
+            sh.Cells[1, 1] = "Номер:";
+            sh.Cells[1, 2] = "Дата:";
+            sh.Cells[1, 3] = "Статус:";
+            sh.Cells[1, 4] = "Долг:";
+            sh.Cells[1, 5] = "ФИО:";
+            sh.Cells[1, 6] = "Бельё:";
+            int pos = 2;
+            for (int i = 0; i < info.Count; i++)
+            {
+                if (info[i].Count != 0)
+                {
+                    sh.Cells[pos, 1] = info[i][0].Num;
+                    pos++;
+                }
+                else continue;
+                int tmp = pos;
+                for (int j = 0; j < info[i].Count; j++)
+                {
+                    sh.Cells[tmp, 2] = info[i][j].Date.ToString();
+                    tmp++;
+                }
+                tmp = pos;
+                for (int j = 0; j < info[i].Count; j++)
+                {
+                    sh.Cells[tmp, 3] = info[i][j].Status;
+                    tmp++;
+                }
+                tmp = pos;
+                for (int j = 0; j < info[i].Count; j++)
+                {
+                    sh.Cells[tmp, 4] = info[i][j].Debt;
+                    tmp++;
+                }
+                tmp = pos;
+                for (int j = 0; j < info[i].Count; j++)
+                {
+                    sh.Cells[tmp, 5] = info[i][j].Name;
+                    tmp++;
+                }
+                tmp = pos;
+                for (int j = 0; j < info[i].Count; j++)
+                {
+                    sh.Cells[tmp, 6] = info[i][j].Pillows;
+                    tmp++;
+                }
+                pos += info[i].Count;
+            }
+            Random rnd = new Random((int)DateTime.Now.ToFileTime());
+            int num = rnd.Next(100);
+            exl.Workbooks[1].SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls");
+            exl.Workbooks[1].Close();
+            exl.Quit();
+            MessageBox.Show("Отчет " + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls" + " создан.");
         }
 
         public static void HistoryReport(List<RoomInformation> info)
@@ -71,11 +126,11 @@ namespace hotel
             var exl = new MExcel.Application();
             exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
             var sh = exl.Worksheets.get_Item(1);
-            sh.Cells[1, 1] = "Дата:                   ";
-            sh.Cells[1, 2] = "Статус:                 ";
-            sh.Cells[1, 3] = "Долг:                   ";
-            sh.Cells[1, 4] = "ФИО:                    ";
-            sh.Cells[1, 5] = "Бельё:                  ";
+            sh.Cells[1, 1] = "Дата:";
+            sh.Cells[1, 2] = "Статус:";
+            sh.Cells[1, 3] = "Долг:";
+            sh.Cells[1, 4] = "ФИО:";
+            sh.Cells[1, 5] = "Бельё:";
             for (int i = 2; i < info.Count; i++)
             {
                 sh.Cells[i, 1] = info[i - 2].Date.ToString();
@@ -109,7 +164,6 @@ namespace hotel
             Object t_obj = true;
             Object f_obj = false;
             var wrd = new MWord.Application();
-            wrd.Visible = true;
             Random rnd = new Random((int)DateTime.Now.ToFileTime());
             int num = rnd.Next(100);
             string pt = System.AppDomain.CurrentDomain.BaseDirectory + "anketa" + room.Person.Name + room.Person.Soname + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".doc";         
@@ -119,7 +173,7 @@ namespace hotel
             MWord.Document doc;
             try
             {
-               doc = wrd.Documents.Add(pt, miss, miss, miss);
+                doc = wrd.Documents.Open(pt);
             }
             catch (Exception ex)
             {
@@ -138,10 +192,11 @@ namespace hotel
             replace("<pby>", room.Person.Pasport.place, ref wrd);
             replace("<bmonth>", room.Person.Birthday.Month.ToString(), ref wrd);
             replace("<bbtime>", room.UsedAt.End.ToShortDateString(), ref wrd);
-            wrd.ActiveDocument.SaveAs(pt);
-           // wrd.ActiveDocument.Close();
-            //wrd.Quit();
-            MessageBox.Show("Отчет " + room.Person.Name + room.Person.Soname + DateTime.Now.ToShortDateString()  + "_" + num.ToString() +".doc" + " создан.");
+            if (wrd.Dialogs[MWord.WdWordDialog.wdDialogFilePrint].Show() == 0)
+            {
+                wrd.ActiveDocument.Close();
+                wrd.Quit();
+            }
         }
     }
 
@@ -182,7 +237,13 @@ namespace hotel
             get { return pillows; }
             set { pillows = value; }
         }
-        public RoomInformation(DateTime date, string status, int debt, string name, int pill)
+        private int num;
+        public int Num
+        {
+            get { return num; }
+            set { num = value; }
+        }
+        public RoomInformation(DateTime date, string status, int debt, string name, int pill, int num)
             : this()
         {
             Date = date;
@@ -190,6 +251,7 @@ namespace hotel
             Name = name;
             Debt = debt;
             Pillows = pill;
+            Num = num;
         }
     }
 
@@ -271,7 +333,6 @@ namespace hotel
                 try
                 {
                     comm.ExecuteNonQuery();
-                    //MessageBox.Show("CALL");
                 }
                 catch (Exception ex2)
                 {
@@ -289,12 +350,12 @@ namespace hotel
             List<RoomInformation> result = new List<RoomInformation>();
             SqlCommand ex = new SqlCommand("Select * From ROOM" + room.Id.ToString() + " Where Date Between '" + range.Start.Date.ToString("MM.dd.yyyy") + "' AND '" +
                 range.End.Date.ToString("MM.dd.yyyy") + "'", connection);
-            using (SqlDataReader rd = ex.ExecuteReader(CommandBehavior.CloseConnection))
+            using (SqlDataReader rd = ex.ExecuteReader(CommandBehavior.SingleResult))
             {
                 if (!rd.HasRows) return result;
                 while (rd.Read())
                 {
-                    result.Add(new RoomInformation((DateTime)rd.GetSqlDateTime(0), (string)rd.GetValue(1), (int)rd.GetValue(2), (string)rd.GetValue(3), (int)rd.GetValue(4)));
+                    result.Add(new RoomInformation((DateTime)rd.GetSqlDateTime(0), (string)rd.GetValue(1), (int)rd.GetValue(2), (string)rd.GetValue(3), (int)rd.GetValue(4), room.Id));
                 }
             }
             return result;
@@ -550,7 +611,6 @@ namespace hotel
             }
             serial(this);
             Report.ArrivalBlank(this);
-            //gittest
         }
 
         public void FreeRoom()

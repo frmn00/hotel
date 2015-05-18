@@ -41,16 +41,27 @@ namespace hotel
 
         private void bOk_Click(object sender, RoutedEventArgs e)
         {
-            int st = Convert.ToInt32(nStart.Text), end = Convert.ToInt32(nEnd.Text);
-            if (st < 203 || st > 210 || end < 203 || end > 210 || st > end)
+            DataBase.Connect();
+            int n_begin = nStart.Text == "" ? 203 : System.Convert.ToInt32(nStart.Text), 
+                n_end = nEnd.Text == "" ? 210 : System.Convert.ToInt32(nEnd.Text);
+            DateTime t_begin = Start.SelectedDate == null ? new DateTime(1980, 1, 1) : (DateTime)Start.SelectedDate,
+                t_end = End.SelectedDate == null ? new DateTime(2050, 1, 1) : (DateTime)End.SelectedDate;
+
+            if (n_begin > n_end || n_end > 210 || n_begin < 203)
             {
                 MessageBox.Show("Неправильно введён промежуток номеров.", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            for (int i = st; i <= end; i++)
+
+            var lst = new List<List<RoomInformation>>();
+            for (int i = n_begin; i <= n_end; i++)
             {
-                //TODO
+                lst.Add(DataBase.Information(d[i], new Itenso.TimePeriod.TimeRange(t_begin, t_end)));
             }
+
+            Report.HistoryReport(lst);
+            this.Close();
+            return;
         }
 
         private void bCancel_Click(object sender, RoutedEventArgs e)
