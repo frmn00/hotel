@@ -65,7 +65,7 @@ namespace hotel
         {
             var exl = new MExcel.Application();
             exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
-            var sh = exl.Worksheets.get_Item(1);
+            var sh = (MExcel.Worksheet)exl.Worksheets.get_Item(1);
             sh.Cells[1, 1] = "Номер:";
             sh.Cells[1, 2] = "Дата:";
             sh.Cells[1, 3] = "Статус:";
@@ -113,6 +113,11 @@ namespace hotel
                 }
                 pos += info[i].Count;
             }
+            sh.Columns.AutoFit();
+            MExcel.Range r = sh.get_Range("A1", "F" + (pos-1).ToString());
+            r.Borders.ColorIndex = 0;
+            r.Borders.LineStyle = MExcel.XlLineStyle.xlContinuous;
+            r.Borders.Weight = MExcel.XlBorderWeight.xlThin;
             Random rnd = new Random((int)DateTime.Now.ToFileTime());
             int num = rnd.Next(100);
             exl.Workbooks[1].SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls");
