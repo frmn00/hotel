@@ -56,7 +56,7 @@ namespace hotel
             tf.ClearFormatting();
             tf.Replacement.Text = to;
             tf.Replacement.ClearFormatting();
-            object ro = MWord.WdReplace.wdReplaceOne;
+            object ro = MWord.WdReplace.wdReplaceAll;
             tf.Execute(Replace: ref ro, Wrap: MWord.WdFindWrap.wdFindContinue);
             return;
         }
@@ -121,12 +121,11 @@ namespace hotel
             Random rnd = new Random((int)DateTime.Now.ToFileTime());
             int num = rnd.Next(100);
             exl.Workbooks[1].SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls");
-            exl.Workbooks[1].Close();
-            exl.Quit();
             MessageBox.Show("Отчет " + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls" + " создан.");
+            exl.Visible = true;
         }
 
-        public static void HistoryReport(List<RoomInformation> info)
+       /* public static void HistoryReport(List<RoomInformation> info)
         {
             var exl = new MExcel.Application();
             exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
@@ -162,44 +161,38 @@ namespace hotel
             exl.Workbooks[1].Close(); 
             exl.Quit();
             MessageBox.Show("Отчет " + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls" + " создан.");
-        }
+        }*/ //DEPRECATED
 
         public static void ArrivalBlank(Room room){
-            Object miss = System.Reflection.Missing.Value;
-            Object t_obj = true;
-            Object f_obj = false;
-            var wrd = new MWord.Application();
-            Random rnd = new Random((int)DateTime.Now.ToFileTime());
-            int num = rnd.Next(100);
-            string pt = System.AppDomain.CurrentDomain.BaseDirectory + "anketa" + room.Person.Name + room.Person.Soname + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".doc";         
-            FileInfo fn = new FileInfo(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\anketa");
-            fn.CopyTo(pt);       
-
+            var wrd = new MWord.Application();  
             MWord.Document doc;
+            wrd.Visible = true;
             try
             {
-                doc = wrd.Documents.Open(pt);
+                doc = wrd.Documents.Open(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\anketa");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+
+            replace("<end>", DateTime.Now.ToString(), ref wrd);
             replace("<name>", room.Person.Name, ref wrd);
             replace("<soname>", room.Person.Soname, ref wrd);
             replace("<lname>", room.Person.ThName, ref wrd);
             replace("<nroom>", room.Id.ToString(), ref wrd);
-            replace("<arrivetime>", room.UsedAt.Start.ToShortDateString(), ref wrd);
+            replace("<arrivetime>", room.UsedAt.Start.ToString(), ref wrd);
             replace("<bdate>", room.Person.Birthday.ToShortDateString(), ref wrd);
             replace("<home>", room.Person.Pasport.home, ref wrd);
             replace("<pnum>", room.Person.Pasport.id, ref wrd);
             replace("<pwhen>", room.Person.Pasport.when.ToShortDateString(), ref wrd);
             replace("<pby>", room.Person.Pasport.place, ref wrd);
-            replace("<bmonth>", room.Person.Birthday.Month.ToString(), ref wrd);
-            replace("<bbtime>", room.UsedAt.End.ToShortDateString(), ref wrd);
+            replace("<bbtime>", room.UsedAt.End.ToString(), ref wrd);
+
             if (wrd.Dialogs[MWord.WdWordDialog.wdDialogFilePrint].Show() == 0)
             {
-                wrd.ActiveDocument.Close();
+                wrd.ActiveDocument.Close(MWord.WdSaveOptions.wdDoNotSaveChanges);
                 wrd.Quit();
             }
         }
@@ -615,7 +608,6 @@ namespace hotel
                 PayRoom(pay);
             }
             serial(this);
-            Report.ArrivalBlank(this);
         }
 
         public void FreeRoom()
@@ -627,8 +619,8 @@ namespace hotel
                 if (this._date.Count != 0)
                     this.st_room = stat.RESERVED;
                 serial(this);
+                Report.ArrivalBlank(this);
             }
-
         }
 
         public void DeleteRes(DateTime time)

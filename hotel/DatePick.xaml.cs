@@ -68,6 +68,10 @@ namespace hotel
             {
                 MessageBox.Show("Выберите клиента.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            catch (WrongData)
+            {
+                MessageBox.Show("Неверно введена дата.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void bCancel_Click(object sender, RoutedEventArgs e)

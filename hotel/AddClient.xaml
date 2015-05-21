@@ -10,7 +10,7 @@
         <Label Content="Отчество:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="ThName" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Дата рождения:" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Birthday" HorizontalAlignment="Left" Height="23" Margin="15,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"/>
+        <TextBox x:Name="Birthday" HorizontalAlignment="Left" Height="23" Margin="10,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Label Content="Номер паспорта:" HorizontalAlignment="Left" Margin="135,3,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="IdPass" HorizontalAlignment="Left" Height="23" Margin="135,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="Ok" Content="Ок" HorizontalAlignment="Left" Margin="32,233,0,0" VerticalAlignment="Top" Width="75" Click="Ok_Click" IsDefault="True"/>

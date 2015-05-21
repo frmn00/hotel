@@ -44,7 +44,7 @@ namespace hotel
                     newpers.Pasport.when = DateTime.Parse(WhenPass.Text);
                     newpers.Birthday = DateTime.Parse(Birthday.Text);
                     newpers.Pasport.who = WhoPass.Text;
-                    newpers.Pasport.place = WherePass.Text;
+                    newpers.Pasport.place = WhoPass.Text;
                     clients.Add(newpers);
                     this.mypers = newpers;
                     this.DialogResult = true;
