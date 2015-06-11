@@ -25,9 +25,7 @@ C:\Users\Freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\Del
 C:\Users\Freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\DeleteReserve.g.cs
 C:\Users\Freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\AddClient.baml
 C:\Users\Freeman\documents\visual studio 2013\Projects\hotel\hotel\obj\Debug\AddClient.g.cs
-C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\hotel_Content.g.cs
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\Database.mdf
-C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\Database_log.ldf
 C:\Users\Sony\Documents\Git\hotel\bin\Debug\hotel.exe.config
 C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.exe
 C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.pdb
@@ -62,3 +60,9 @@ C:\Users\Sony\Documents\Git\hotel\obj\Debug\hotel.csproj.GenerateResource.Cache
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\hotel.csprojResolveAssemblyReference.cache
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\HistoryReport.baml
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\HistoryReport.g.cs
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.xml
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.SqlServer.xml

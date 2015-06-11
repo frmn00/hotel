@@ -24,6 +24,8 @@ using Itenso.TimePeriod;
 using MWord = Microsoft.Office.Interop.Word;
 using MExcel = Microsoft.Office.Interop.Excel;
 using System.Reflection;
+using SQLite;
+using SQLite3 = System.Data.SQLite;
 
 namespace hotel
 {
@@ -125,44 +127,6 @@ namespace hotel
             exl.Visible = true;
         }
 
-       /* public static void HistoryReport(List<RoomInformation> info)
-        {
-            var exl = new MExcel.Application();
-            exl.Workbooks.Open(System.AppDomain.CurrentDomain.BaseDirectory + "templates\\history");
-            var sh = exl.Worksheets.get_Item(1);
-            sh.Cells[1, 1] = "Дата:";
-            sh.Cells[1, 2] = "Статус:";
-            sh.Cells[1, 3] = "Долг:";
-            sh.Cells[1, 4] = "ФИО:";
-            sh.Cells[1, 5] = "Бельё:";
-            for (int i = 2; i < info.Count; i++)
-            {
-                sh.Cells[i, 1] = info[i - 2].Date.ToString();
-            }
-            for (int i = 2; i < info.Count; i++)
-            {
-                sh.Cells[i, 2] = info[i - 2].Status;
-            }
-            for (int i = 2; i < info.Count; i++)
-            {
-                sh.Cells[i, 3] = info[i - 2].Debt.ToString();
-            }
-            for (int i = 2; i < info.Count; i++)
-            {
-                sh.Cells[i, 4] = info[i - 2].Name;
-            }
-            for (int i = 2; i < info.Count; i++)
-            {
-                sh.Cells[i, 5] = info[i - 2].Pillows.ToString();
-            }
-            Random rnd = new Random((int)DateTime.Now.ToFileTime());
-            int num = rnd.Next(100);
-            exl.Workbooks[1].SaveAs(System.AppDomain.CurrentDomain.BaseDirectory + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls");
-            exl.Workbooks[1].Close(); 
-            exl.Quit();
-            MessageBox.Show("Отчет " + "history" + DateTime.Now.ToShortDateString() + "_" + num.ToString() + ".xls" + " создан.");
-        }*/ //DEPRECATED
-
         public static void ArrivalBlank(Room room){
             var wrd = new MWord.Application();  
             MWord.Document doc;
@@ -201,6 +165,9 @@ namespace hotel
     public struct RoomInformation
     {
         private DateTime date;
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+        [Indexed]
         public DateTime Date
         {
             get { return date; }
@@ -208,34 +175,35 @@ namespace hotel
         }
 
         private string status;
-
+        [MaxLength(20)]
         public string Status
         {
             get { return status; }
             set { status = value; }
         }
         private string FIO;
-
+        [MaxLength(150)]
         public string Name
         {
             get { return FIO; }
             set { FIO = value; }
         }
         private int debt;
-
+        [Indexed]
         public int Debt
         {
             get { return debt; }
             set { debt = value; }
         }
         private int pillows;
-
+        [Indexed]
         public int Pillows
         {
             get { return pillows; }
             set { pillows = value; }
         }
         private int num;
+        [Indexed]
         public int Num
         {
             get { return num; }
@@ -251,114 +219,152 @@ namespace hotel
             Pillows = pill;
             Num = num;
         }
+        public RoomInformation(bool f):this() {      
+        }
     }
+
+
 
     public static class DataBase
     {
-        private static SqlConnection connection;
-        private static bool isconnected = false;
-        public static bool Connect()
+        public static void UpdateRoom(Room room)
         {
-            string connstring = @"Data Source=(localdb)\Projects;Initial Catalog=base;
-                                Integrated Security=True;Connect Timeout=30;Encrypt=False;
-                                TrustServerCertificate=False;";
-            connection = new SqlConnection(connstring);
+            if (!File.Exists("database.db"))
+            {
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
             try
             {
-                connection.Open();
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {
+                    db.CreateTable<RoomInformation>();
+                    db.Insert(new RoomInformation(true)
+                    {
+                        Date = DateTime.Now,
+                        Debt = room.Debt,
+                        Num = room.Id,
+                        Name = room.Person.ToString(),
+                        Pillows = room.Pillows,
+                        Status = room.Status == Room.stat.FREE ? "Свободен" : "Занят"
+                    });
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                isconnected = false;
-                return false;
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            isconnected = true;
-            return true;
-        }
-
-        public static bool UpdateRoom(Room room)
-        {
-            if (connection != null)
-            {
-                string q = "CREATE TABLE ROOM" + room.Id.ToString() +
-                    " (Date datetime not null, Status nvarchar(20) not null, Debt int not null, " +
-                    "  FIO nvarchar(100), Pillows int not null, id int IDENTITY, primary key (id))";
-                SqlCommand comm = new SqlCommand(q, connection);
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (SqlException ex)
-                {
-                    if (ex.Number != 2714)
-                    {
-                        MessageBox.Show(ex.Message);
-                        return false;
-                    }
-                }
-                q = "Insert into ROOM" + room.Id.ToString() + "(Date, Status, Debt, FIO, Pillows)" +
-                    "Values (@Date, @Status, @Debt, @FIO, @Pillows)";
-                comm = new SqlCommand(q, connection);
-                SqlParameter param = new SqlParameter();
-                param.ParameterName = "@Date";
-                param.Value = DateTime.Now;
-                param.SqlDbType = SqlDbType.DateTime;
-                comm.Parameters.Add(param);
-                param = new SqlParameter();
-                param.ParameterName = "@Status";
-                param.Value = room.Status == Room.stat.FREE ? "Свободен" : room.Status == Room.stat.RESERVED ? "Забронирован" : "Занят";
-                param.SqlDbType = SqlDbType.NVarChar;
-                comm.Parameters.Add(param);
-                param = new SqlParameter();
-                param.ParameterName = "@Debt";
-                param.Value = room.Debt;
-                param.SqlDbType = SqlDbType.Int;
-                comm.Parameters.Add(param);
-                param = new SqlParameter();
-                param.ParameterName = "@FIO";
-                if (room.Person != null)
-                    param.Value = room.Person.Soname + " " + room.Person.Name + " " + room.Person.ThName;
-                else
-                    param.Value = "-";
-                param.SqlDbType = SqlDbType.NVarChar;
-                comm.Parameters.Add(param);
-                param = new SqlParameter();
-                param.ParameterName = "@Pillows";
-                param.Value = room.Pillows;
-                param.SqlDbType = SqlDbType.Int;
-                comm.Parameters.Add(param);
-                try
-                {
-                    comm.ExecuteNonQuery();
-                }
-                catch (Exception ex2)
-                {
-                    MessageBox.Show(ex2.Message);
-                    return false;
-                }
-                return true;
-            }
-            else return false;
         }
 
         public static List<RoomInformation> Information(Room room, TimeRange range)
         {
-            if (!isconnected) Connect();
-            List<RoomInformation> result = new List<RoomInformation>();
-            SqlCommand ex = new SqlCommand("Select * From ROOM" + room.Id.ToString() + " Where Date Between '" + range.Start.Date.ToString("MM.dd.yyyy") + "' AND '" +
-                range.End.Date.ToString("MM.dd.yyyy") + "'", connection);
-            using (SqlDataReader rd = ex.ExecuteReader(CommandBehavior.SingleResult))
+            List<RoomInformation> ans = new List<RoomInformation>();
+            if (!File.Exists("database.db"))
             {
-                if (!rd.HasRows) return result;
-                while (rd.Read())
-                {
-                    result.Add(new RoomInformation((DateTime)rd.GetSqlDateTime(0), (string)rd.GetValue(1), (int)rd.GetValue(2), (string)rd.GetValue(3), (int)rd.GetValue(4), room.Id));
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
+            try
+            {
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {                
+                    var qw = db.Query<RoomInformation>(string.Format("select * from RoomInformation where Num = {0} and Date between \"{1}\" and \"{2}\"", 
+                        room.Id, range.Start.Date.ToString("yyyy-MM-dd"), range.End.Date.ToString("yyyy-MM-dd")));
+                    ans = qw;
                 }
             }
-            return result;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            return ans;
         }
 
+        public static void CurrentSave(List<Room> rooms)
+        {
+            if (!File.Exists("database.db"))
+            {
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
+            try
+            {
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {                
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+        }
+
+        public static List<Room> CurrentLoad()
+        {
+            if (!File.Exists("database.db"))
+            {
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
+            try
+            {
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            return null;
+        }
+
+        public static void ClientSave(List<Person> clients)
+        {
+            if (!File.Exists("database.db"))
+            {
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
+            try
+            {
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {
+                    db.DeleteAll<Person>();
+                    db.CreateTable<Person>();
+                    db.InsertAll(clients);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+        }
+
+        public static List<Person> CilentsLoad()
+        {
+            List<Person> ans = new List<Person>();
+            if (!File.Exists("database.db"))
+            {
+                SQLite3.SQLiteConnection.CreateFile("database.db");
+            }
+            try
+            {
+                using (var db = new SQLite.SQLiteConnection("database.db"))
+                {
+                    var qw = db.Query<Person>("select * from Person");
+                    ans = qw;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+            return ans;
+        }
     }
 
     [Serializable]
@@ -516,6 +522,10 @@ namespace hotel
             this.st_room = stat.FREE;
             this.is_dirty = false;
             this.num_res = 0;
+        }
+        public Room()
+        {
+
         }
 
         public bool IsReservedToday
@@ -738,19 +748,19 @@ namespace hotel
     public class Person
     {
         string name, soname, thname;
-
+        [MaxLength(50)]
         public string ThName
         {
             get { return thname; }
             set { thname = value; }
         }
-
+        [MaxLength(50)]
         public string Soname
         {
             get { return soname; }
             set { soname = value; }
         }
-
+        [MaxLength(50)]
         public string Name
         {
             get { return name; }
@@ -759,7 +769,7 @@ namespace hotel
 
 
         DateTime birthday;
-
+        [Indexed]
         public DateTime Birthday
         {
             get { return birthday; }
@@ -791,6 +801,10 @@ namespace hotel
                 this.thname = thname;
             }
             else throw new WrongData();
+        }
+        public Person()
+        {
+
         }
 
         public override string ToString()
@@ -828,10 +842,7 @@ namespace hotel
             rooms[6].SetObj(this.Room6);
             rooms[7].SetObj(this.Room7);
             rooms[8].SetObj(this.Room8);
-            DataBase.Connect();
          }
-
-
 
         public void serial(Room room)
         {
@@ -859,10 +870,7 @@ namespace hotel
             WebClient client = new WebClient();
             return client.DownloadString(url) == "1";
         }
-
-        
-        
-
+              
         public void saveBase(Room[] rooms, string filename)
         {
             BinaryFormatter format = new BinaryFormatter();
@@ -979,9 +987,6 @@ namespace hotel
             {
                 this.clients = loadBaseClient();
             }
-            //DateTime bg = new DateTime(2015, 4, 23);
-            //DateTime ed = new DateTime(2015, 5, 15);
-            //Report.HistoryReport(DataBase.Information(rooms[1], new TimeRange(bg, ed)));
         }
 
         private void cleanRoom(object sender, RoutedEventArgs e)

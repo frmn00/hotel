@@ -41,7 +41,6 @@ namespace hotel
 
         private void bOk_Click(object sender, RoutedEventArgs e)
         {
-            DataBase.Connect();
             int n_begin = nStart.Text == "" ? 203 : System.Convert.ToInt32(nStart.Text), 
                 n_end = nEnd.Text == "" ? 210 : System.Convert.ToInt32(nEnd.Text);
             DateTime t_begin = Start.SelectedDate == null ? new DateTime(1980, 1, 1) : (DateTime)Start.SelectedDate,

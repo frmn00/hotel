@@ -8,12 +8,12 @@ C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\
 hotel
 none
 false
-CODE_ANALYSIS;DEBUG;TRACE
+CODE_ANALYSIS;TRACE;DEBUG
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\App.xaml
 7990056956
-2-980765204
-121102153524
-16-1910142083
+
+121923649975
+22-1749155531
 AddClient.xaml;DatePick.xaml;DateRes.xaml;DeleteReserve.xaml;HistoryReport.xaml;MainWindow.xaml;RoomInfo.xaml;
 
 False
