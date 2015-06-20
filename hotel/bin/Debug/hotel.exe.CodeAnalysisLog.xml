@@ -10,42 +10,42 @@
        <Types>
         <Type Name="InterTime" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'InterTime', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="NoPerson" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'NoPerson', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="RoomInUse" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomInUse', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="RoomReserved" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'RoomReserved', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="WrondPillow" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrondPillow', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
         </Type>
         <Type Name="WrongData" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'WrongData', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>
@@ -58,389 +58,389 @@
          <Members>
           <Member Name="#BindBlob(System.IntPtr,System.Int32,System.Byte[],System.Int32,System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindBlob(IntPtr, int, byte[], int, IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindBlob(IntPtr, int, byte[], int, IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindDouble(System.IntPtr,System.Int32,System.Double)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindDouble(IntPtr, int, double)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindDouble(IntPtr, int, double)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindInt(System.IntPtr,System.Int32,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindInt(IntPtr, int, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindInt(IntPtr, int, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindInt64(System.IntPtr,System.Int32,System.Int64)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindInt64(IntPtr, int, long)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindInt64(IntPtr, int, long)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindNull(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindNull(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindNull(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindParameterIndex(System.IntPtr,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindParameterIndex(IntPtr, string)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindParameterIndex(IntPtr, string)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
-            <Message Id="1" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+            <Message Id="1" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
              <Issue Name="ParameterImplicitAnsi" Certainty="75" Level="Error">Чтобы уменьшить угрозу безопасности, следует маршалировать параметр 'name' как Юникод, установив значение CharSet.Unicode для DllImport.CharSet, либо явно маршалировав параметр как UnmanagedType.LPWStr. Если необходимо упаковать и передать эту строку как ANSI или зависящую от системы, укажите MarshalAs явно и установите BestFitMapping=false; для обеспечения дополнительной безопасности также установите ThrowOnUnmappableChar=true.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BindText(System.IntPtr,System.Int32,System.String,System.Int32,System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BindText(IntPtr, int, string, int, IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BindText(IntPtr, int, string, int, IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#BusyTimeout(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.BusyTimeout(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.BusyTimeout(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Changes(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Changes(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Changes(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Close(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Close(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Close(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnBlob(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnBlob(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnBlob(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnBytes(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnBytes(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnBytes(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnCount(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnCount(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnCount(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnDouble(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnDouble(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnDouble(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnInt(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnInt(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnInt(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnInt64(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnInt64(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnInt64(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnName(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnName(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnName(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnName16Internal(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnName16Internal(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnText(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnText(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnText(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnText16(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnText16(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnText16(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ColumnType(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ColumnType(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ColumnType(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Config(SQLite.SQLite3+ConfigOption)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Config(SQLite3.ConfigOption)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Config(SQLite3.ConfigOption)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#EnableLoadExtension(System.IntPtr,System.Int32)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.EnableLoadExtension(IntPtr, int)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.EnableLoadExtension(IntPtr, int)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Errmsg(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Errmsg(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Errmsg(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#ExtendedErrCode(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.ExtendedErrCode(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.ExtendedErrCode(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Finalize(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Finalize(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Finalize(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Initialize()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Initialize()' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Initialize()', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#LastInsertRowid(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.LastInsertRowid(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.LastInsertRowid(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#LibVersionNumber()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.LibVersionNumber()' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.LibVersionNumber()', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Open(System.Byte[],System.IntPtr&amp;,System.Int32,System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Open(byte[], out IntPtr, int, IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Open(byte[], out IntPtr, int, IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Open(System.String,System.IntPtr&amp;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Open(string, out IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Open(string, out IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
-            <Message Id="0" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+            <Message Id="0" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
              <Issue Name="ParameterImplicitAnsi" Certainty="75" Level="Error">Чтобы уменьшить угрозу безопасности, следует маршалировать параметр 'filename' как Юникод, установив значение CharSet.Unicode для DllImport.CharSet, либо явно маршалировав параметр как UnmanagedType.LPWStr. Если необходимо упаковать и передать эту строку как ANSI или зависящую от системы, укажите MarshalAs явно и установите BestFitMapping=false; для обеспечения дополнительной безопасности также установите ThrowOnUnmappableChar=true.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Open(System.String,System.IntPtr&amp;,System.Int32,System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Open(string, out IntPtr, int, IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Open(string, out IntPtr, int, IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
-            <Message Id="0" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+            <Message Id="0" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
              <Issue Name="ParameterImplicitAnsi" Certainty="75" Level="Error">Чтобы уменьшить угрозу безопасности, следует маршалировать параметр 'filename' как Юникод, установив значение CharSet.Unicode для DllImport.CharSet, либо явно маршалировав параметр как UnmanagedType.LPWStr. Если необходимо упаковать и передать эту строку как ANSI или зависящую от системы, укажите MarshalAs явно и установите BestFitMapping=false; для обеспечения дополнительной безопасности также установите ThrowOnUnmappableChar=true.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Open16(System.String,System.IntPtr&amp;)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Open16(string, out IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Open16(string, out IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Prepare2(System.IntPtr,System.String,System.Int32,System.IntPtr&amp;,System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Prepare2(IntPtr, string, int, out IntPtr, IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Prepare2(IntPtr, string, int, out IntPtr, IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
-            <Message Id="1" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+            <Message Id="1" TypeName="SpecifyMarshalingForPInvokeStringArguments" Category="Microsoft.Globalization" CheckId="CA2101" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
              <Issue Name="ParameterImplicitAnsi" Certainty="75" Level="Error">Чтобы уменьшить угрозу безопасности, следует маршалировать параметр 'sql' как Юникод, установив значение CharSet.Unicode для DllImport.CharSet, либо явно маршалировав параметр как UnmanagedType.LPWStr. Если необходимо упаковать и передать эту строку как ANSI или зависящую от системы, укажите MarshalAs явно и установите BestFitMapping=false; для обеспечения дополнительной безопасности также установите ThrowOnUnmappableChar=true.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Reset(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Reset(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Reset(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#SetDirectory(System.UInt32,System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.SetDirectory(uint, string)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.SetDirectory(uint, string)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Shutdown()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Shutdown()' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Shutdown()', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
           </Member>
           <Member Name="#Step(System.IntPtr)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="MovePInvokesToNativeMethodsClass" Category="Microsoft.Design" CheckId="CA1060" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="95" Level="CriticalWarning">Так как метод является методом P/Invoke, 'SQLite3.Step(IntPtr)' должен быть определен в классе с именем NativeMethods, SafeNativeMethods или UnsafeNativeMethods.</Issue>
             </Message>
-            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="Breaking">
+            <Message TypeName="PInvokesShouldNotBeVisible" Category="Microsoft.Interoperability" CheckId="CA1401" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="Breaking">
              <Issue Certainty="50" Level="CriticalError">Измените уровень доступа P/Invoke 'SQLite3.Step(IntPtr)', чтобы он не был виден извне своей сборки.</Issue>
             </Message>
            </Messages>
@@ -451,7 +451,7 @@
          <Members>
           <Member Name="#Update(System.Object,System.Type)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="True">
            <Messages>
-            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+            <Message TypeName="RethrowToPreserveStackDetails" Category="Microsoft.Usage" CheckId="CA2200" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
              <Issue Certainty="95" Level="Error" Path="c:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel" File="SQLite.cs" Line="1361">'SQLiteConnection.Update(object, Type)' повторно порождает перехваченное исключение и явно указывает его в качестве аргумента. Используйте вместо этого "throw" без аргумента, чтобы сохранить место стека, где первоначально было вызвано исключение.</Issue>
             </Message>
            </Messages>
@@ -460,7 +460,7 @@
         </Type>
         <Type Name="SQLiteException" Kind="Class" Accessibility="Public" ExternallyVisible="True">
          <Messages>
-          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-11 18:49:23Z" FixCategory="NonBreaking">
+          <Message TypeName="MarkISerializableTypesWithSerializable" Category="Microsoft.Usage" CheckId="CA2237" Status="Active" Created="2015-06-20 17:21:03Z" FixCategory="NonBreaking">
            <Issue Certainty="95" Level="Error">Добавьте [Serializable] к 'SQLiteException', так как этот тип реализует ISerializable.</Issue>
           </Message>
          </Messages>

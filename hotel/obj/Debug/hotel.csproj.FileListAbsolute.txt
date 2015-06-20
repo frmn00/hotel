@@ -66,3 +66,7 @@ C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\Sys
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\System.Data.SQLite.Linq.dll
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.xml
 C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\GivePillows.baml
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\GivePillows.g.cs
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\Payment.baml
+C:\Users\Freeman\Documents\Visual Studio 2013\Projects\hotel\hotel\obj\Debug\Payment.g.cs

@@ -11,16 +11,18 @@
 
         <Grid.Resources>
             <ContextMenu x:Key="cMenu" >
-                <MenuItem Header="Помыть" Click="cleanRoom" HorizontalAlignment="Left"/>
                 <MenuItem Header="Заселить" Click="useRoom" HorizontalAlignment="Left"/>
-                <MenuItem Header="Забронировать" Click="resRoom" HorizontalAlignment="Left"/>
                 <MenuItem Header="Освободить" Click="freeRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Забронировать" Click="resRoom" HorizontalAlignment="Left"/>
                 <MenuItem Header="Снять бронь" Click="dResRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Оплатить" Click="PayRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Помыть" Click="cleanRoom" HorizontalAlignment="Left"/>
+                <MenuItem Header="Выдать бельё" Click="GivePillows" HorizontalAlignment="Left"/>
+                <MenuItem Header="Вернуть бельё" Click="RetPillows" HorizontalAlignment="Left"/>
             </ContextMenu>
         </Grid.Resources>
         <Menu Background="#FFF0EDED" Height="21" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="Файл">
-                <MenuItem Header="Загрузить базу"  Click="doMagic"></MenuItem>
                 <Separator></Separator>
                 <MenuItem Header="Выход" Click="exit"></MenuItem>
             </MenuItem>

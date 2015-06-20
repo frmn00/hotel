@@ -39,12 +39,12 @@ namespace hotel
                 Person newpers = new Person(Name.Text, Soname.Text, ThName.Text);
                 if (!(WherePass.Text.Length == 0 || WhenPass.Text.Length == 0 || IdPass.Text.Length == 0 || WhoPass.Text.Length == 0 || Birthday.Text.Length == 0))
                 {
-                    newpers.Pasport.home = WherePass.Text;
-                    newpers.Pasport.id = IdPass.Text;
-                    newpers.Pasport.when = DateTime.Parse(WhenPass.Text);
+                    newpers.PHome = WherePass.Text;
+                    newpers.PId = IdPass.Text;
+                    newpers.PWhen = DateTime.Parse(WhenPass.Text);
                     newpers.Birthday = DateTime.Parse(Birthday.Text);
-                    newpers.Pasport.who = WhoPass.Text;
-                    newpers.Pasport.place = WhoPass.Text;
+                    newpers.PWho = WhoPass.Text;
+                    newpers.PPlace = WhoPass.Text;
                     clients.Add(newpers);
                     this.mypers = newpers;
                     this.DialogResult = true;

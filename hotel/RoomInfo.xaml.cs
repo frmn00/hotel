@@ -43,6 +43,7 @@ namespace hotel
             {
                 tDate.Text += String.Format("Забронирован с {0}, по {1}" + System.Environment.NewLine, s.Start.ToString().Substring(0, 10), s.End.ToString().Substring(0, 10));
             }
+            tDate.Text += "Бельё: " + room.Pillows.ToString() + "\n";
         }
 
         public void inRes()

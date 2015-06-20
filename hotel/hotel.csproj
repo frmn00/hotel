@@ -111,8 +111,14 @@
     <Compile Include="DeleteReserve.xaml.cs">
       <DependentUpon>DeleteReserve.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GivePillows.xaml.cs">
+      <DependentUpon>GivePillows.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HistoryReport.xaml.cs">
       <DependentUpon>HistoryReport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Payment.xaml.cs">
+      <DependentUpon>Payment.xaml</DependentUpon>
     </Compile>
     <Compile Include="RoomInfo.xaml.cs">
       <DependentUpon>RoomInfo.xaml</DependentUpon>
@@ -134,6 +140,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GivePillows.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HistoryReport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,6 +160,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Payment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RoomInfo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

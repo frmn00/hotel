@@ -130,7 +130,6 @@ namespace hotel
         public static void ArrivalBlank(Room room){
             var wrd = new MWord.Application();  
             MWord.Document doc;
-            wrd.Visible = true;
             try
             {
                 doc = wrd.Documents.Open(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\anketa");
@@ -148,10 +147,10 @@ namespace hotel
             replace("<nroom>", room.Id.ToString(), ref wrd);
             replace("<arrivetime>", room.UsedAt.Start.ToString(), ref wrd);
             replace("<bdate>", room.Person.Birthday.ToShortDateString(), ref wrd);
-            replace("<home>", room.Person.Pasport.home, ref wrd);
-            replace("<pnum>", room.Person.Pasport.id, ref wrd);
-            replace("<pwhen>", room.Person.Pasport.when.ToShortDateString(), ref wrd);
-            replace("<pby>", room.Person.Pasport.place, ref wrd);
+            replace("<home>", room.Person.PHome, ref wrd);
+            replace("<pnum>", room.Person.PId, ref wrd);
+            replace("<pwhen>", room.Person.PWhen.ToShortDateString(), ref wrd);
+            replace("<pby>", room.Person.PPlace, ref wrd);
             replace("<bbtime>", room.UsedAt.End.ToString(), ref wrd);
 
             if (wrd.Dialogs[MWord.WdWordDialog.wdDialogFilePrint].Show() == 0)
@@ -159,6 +158,40 @@ namespace hotel
                 wrd.ActiveDocument.Close(MWord.WdSaveOptions.wdDoNotSaveChanges);
                 wrd.Quit();
             }
+            wrd.Quit();
+            wrd = null;
+        }
+
+        public static void InBlank(Room room)
+        {
+            int n = System.Convert.ToInt32(File.ReadAllLines(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\num")[0]);
+            var wrd = new MWord.Application();
+            MWord.Document doc;
+            try
+            {
+                doc = wrd.Documents.Open(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\in");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            replace("<snum>", n.ToString(), ref wrd);
+            replace("<fullname>", room.Person.ToString(), ref wrd);
+            replace("<rnum>", room.Id.ToString(), ref wrd);
+            replace("<datein>", room.UsedAt.Start.ToString(), ref wrd);
+            replace("<dateout>", room.UsedAt.End.ToString(), ref wrd);
+            replace("<sum>", room.Debt.ToString(), ref wrd); 
+            if (wrd.Dialogs[MWord.WdWordDialog.wdDialogFilePrint].Show() == 0)
+            {
+                wrd.ActiveDocument.Close(MWord.WdSaveOptions.wdDoNotSaveChanges);
+                wrd.Quit();
+            }
+            wrd.Quit();
+            wrd = null;
+            n++;
+            File.WriteAllText(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\num", n.ToString(), Encoding.UTF8);
+            return;
         }
     }
 
@@ -354,6 +387,7 @@ namespace hotel
             {
                 using (var db = new SQLite.SQLiteConnection("database.db"))
                 {
+                    db.CreateTable<Person>();
                     var qw = db.Query<Person>("select * from Person");
                     ans = qw;
                 }
@@ -562,8 +596,7 @@ namespace hotel
         {
             if (this.iPillow >= i)
                 iPillow -= i;
-            else
-                throw new WrondPillow();
+            serial(this);
         }
 
         public bool InTime(DateTime time)
@@ -577,7 +610,7 @@ namespace hotel
 
         public void Color()
         {
-            if (this.num_res != 0)
+            if (this.num_res != -1)
             {
                 var tmp = "\n     "+this.id.ToString();
                 for (int i = 0; i < this.num_res; i++)
@@ -615,6 +648,7 @@ namespace hotel
                 this.in_room = date_in;
                 this.out_room = date_out;
                 CashRoom(sum);
+                Report.InBlank(this);
                 PayRoom(pay);
             }
             serial(this);
@@ -642,12 +676,12 @@ namespace hotel
                 });
             this.res.Remove(todel);
             this._date.Remove(time);
+            this.num_res--;
             if (_date.Count == 0 && res.Count == 0 && st_room != stat.USE)
             {
                 this.st_room = stat.FREE;
                 Color();
             }
-            this.num_res--;
             serial(this);
         }
 
@@ -705,31 +739,32 @@ namespace hotel
         public void CashRoom(int sum)
         {
             this.pay_room = sum;
-            //serial(this);
+            serial(this);
         }
 
         public void PayRoom(int sum)
         {
+            if (sum <= 0)
+            {
+                MessageBox.Show("Некорректная сумма.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             if (this.pay_room >= sum)
             {
                 this.pay_room -= sum;
             }
             else
             {
-                //throw some exeption
+                MessageBox.Show("Сумма превышает долг!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            //serial(this);
+            serial(this);
         }
 
         public int DaysOfUse()
         {
             return (this.out_room - this.in_room).Days;
         }
-
-        //public int daysOfRes()
-      //  {
-            
-      //  }
 
         public void CleanRoom(){
             if (this.is_dirty)
@@ -775,21 +810,38 @@ namespace hotel
             get { return birthday; }
             set { birthday = value; }
         }
-        [Serializable]
-        public struct Passport
+        private string id, place, who, home;
+        [MaxLength(120)]
+        public string PHome
         {
-            public string id, place, who, home;
-            public DateTime when;
-            public Passport(string id, string place, string who, string home, DateTime when)
-            {
-                this.home = home;
-                this.id = id;
-                this.when = when;
-                this.who = who;
-                this.place = place;
-            }
+            get { return home; }
+            set { home = value; }
         }
-        public Passport Pasport = new Passport();
+        [MaxLength(150)]
+        public string PWho
+        {
+            get { return who; }
+            set { who = value; }
+        }
+        [MaxLength(150)]
+        public string PPlace
+        {
+            get { return place; }
+            set { place = value; }
+        }
+        [MaxLength(30)]
+        public string PId
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        private DateTime when;
+        [Indexed]
+        public DateTime PWhen
+        {
+            get { return when; }
+            set { when = value; }
+        }
 
 
         public Person(string name, string soname, string thname)
@@ -851,25 +903,25 @@ namespace hotel
             DataBase.UpdateRoom(room);
             //PostBase("http://basehotel.16mb.com/upload.php?id=2", "base.dat");
         }
+        //DEPRECATED
+        //public string PostBase(string url, string filename)
+        //{
+        //    WebClient client = new WebClient();
+        //    byte[] resp = client.UploadFile(url, filename);
+        //    return System.Text.Encoding.ASCII.GetString(resp);
+        //}
 
-        public string PostBase(string url, string filename)
-        {
-            WebClient client = new WebClient();
-            byte[] resp = client.UploadFile(url, filename);
-            return System.Text.Encoding.ASCII.GetString(resp);
-        }
+        //public void DownloadBase(string url, string filename)
+        //{
+        //    WebClient client = new WebClient();
+        //    client.DownloadFile(url, filename);
+        //}
 
-        public void DownloadBase(string url, string filename)
-        {
-            WebClient client = new WebClient();
-            client.DownloadFile(url, filename);
-        }
-
-        public bool NeedReload(string url)
-        {
-            WebClient client = new WebClient();
-            return client.DownloadString(url) == "1";
-        }
+        //public bool NeedReload(string url)
+        //{
+        //    WebClient client = new WebClient();
+        //    return client.DownloadString(url) == "1";
+        //}
               
         public void saveBase(Room[] rooms, string filename)
         {
@@ -878,16 +930,6 @@ namespace hotel
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 format.Serialize(fs, rooms);
-            }
-        }
-
-        public void saveBaseClients(List<Person> clients, string filename)
-        {
-            BinaryFormatter format = new BinaryFormatter();
-
-            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
-            {
-                format.Serialize(fs, clients);
             }
         }
 
@@ -901,14 +943,6 @@ namespace hotel
             }
         }
 
-        public List<Person> loadBaseClient()
-        {
-            BinaryFormatter format2 = new BinaryFormatter();
-            using (FileStream f2s = new FileStream(CLBASE, FileMode.OpenOrCreate))
-            {
-                return (List<Person>)format2.Deserialize(f2s);
-            }
-        }
 
         private void click(object sender, MouseButtonEventArgs e)
         {
@@ -921,8 +955,8 @@ namespace hotel
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             saveBase(rooms, BASE);
-            if(clients.Count > 0)
-            saveBaseClients(clients, "clients.dat");
+            if (clients.Count > 0)
+                DataBase.ClientSave(clients);
         }
 
         public void updateColor(Room[] roomz)
@@ -933,18 +967,18 @@ namespace hotel
             }
         }
 
-        public void doMagic(object sender, EventArgs e)
-        {
-            if(NeedReload("http://basehotel.16mb.com/check.php?id=1")){
-                DownloadBase("http://basehotel.16mb.com/xyzzy/base.dat", "base.dat");
-                rooms = loadBaseRoom(); 
-                InitCls();
-                updateColor(rooms);
-            }
-            else{
-                MessageBox.Show("Нет изменений.");
-            }
-        }
+        //public void doMagic(object sender, EventArgs e)
+        //{
+        //    if(NeedReload("http://basehotel.16mb.com/check.php?id=1")){
+        //        DownloadBase("http://basehotel.16mb.com/xyzzy/base.dat", "base.dat");
+        //        rooms = loadBaseRoom(); 
+        //        InitCls();
+        //        updateColor(rooms);
+        //    }
+        //    else{
+        //        MessageBox.Show("Нет изменений.");
+        //    }
+        //}
 
         public void HistoryReports(object sender, EventArgs e)
         {
@@ -983,10 +1017,8 @@ namespace hotel
                 InitCls();
                 updateColor(rooms);                
             }
-            if (File.Exists("clients.dat"))
-            {
-                this.clients = loadBaseClient();
-            }
+            this.clients = DataBase.CilentsLoad();
+
         }
 
         private void cleanRoom(object sender, RoutedEventArgs e)
@@ -1051,6 +1083,46 @@ namespace hotel
                 }
         }
 
+        private void GivePillows(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            ContextMenu menu = (ContextMenu)item.Parent;
+            TextBlock block = (TextBlock)menu.PlacementTarget;
+            var myroom = rooms[System.Convert.ToInt32(block.Uid)];
+            if (myroom.Status == Room.stat.RESERVED)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            if (myroom.Status == Room.stat.FREE)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            GivePillows g = new GivePillows(myroom, 1);
+            g.ShowDialog();
+        }
+
+        private void RetPillows(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            ContextMenu menu = (ContextMenu)item.Parent;
+            TextBlock block = (TextBlock)menu.PlacementTarget;
+            var myroom = rooms[System.Convert.ToInt32(block.Uid)];
+            if (myroom.Status == Room.stat.RESERVED)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            if (myroom.Status == Room.stat.FREE)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            GivePillows g = new GivePillows(myroom, 0);
+            g.ShowDialog();
+        }
+
         private void dResRoom(object sender, RoutedEventArgs e)
         {
             MenuItem item = (MenuItem)sender;
@@ -1067,6 +1139,29 @@ namespace hotel
         private void exit(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void PayRoom(object sender, RoutedEventArgs e)
+        {
+            MenuItem item = (MenuItem)sender;
+            ContextMenu menu = (ContextMenu)item.Parent;
+            TextBlock block = (TextBlock)menu.PlacementTarget;
+            var myroom = rooms[System.Convert.ToInt32(block.Uid)];
+            if (myroom.Status == Room.stat.RESERVED)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            if (myroom.Status == Room.stat.FREE)
+            {
+                MessageBox.Show("Комната свободна.");
+                return;
+            }
+            if (myroom.Debt != 0)
+            {
+                Payment form = new Payment(myroom);
+                form.ShowDialog();
+            }
         }
 
 
