@@ -36,7 +36,7 @@
   </PostinstrumentEvent>
   <Binaries>
     <ProjBinary>
-      <Path>hotel\obj\Debug\hotel.exe</Path>
+      <Path>hotel\obj\Release\hotel.exe</Path>
       <ArgumentTimestamp>01/01/0001 00:00:00</ArgumentTimestamp>
       <Instrument>true</Instrument>
       <Sample>true</Sample>
@@ -48,8 +48,8 @@
       <LaunchProject>true</LaunchProject>
       <OverrideProjectSettings>false</OverrideProjectSettings>
       <LaunchMethod>Executable</LaunchMethod>
-      <ExecutablePath>hotel\bin\Debug\hotel.exe</ExecutablePath>
-      <StartupDirectory>hotel\bin\Debug\</StartupDirectory>
+      <ExecutablePath>hotel\bin\Release\hotel.exe</ExecutablePath>
+      <StartupDirectory>hotel\bin\Release\</StartupDirectory>
       <Arguments>
       </Arguments>
       <NetAppHost>IIS</NetAppHost>

@@ -128,7 +128,9 @@ namespace hotel
         }
 
         public static void ArrivalBlank(Room room){
-            var wrd = new MWord.Application();  
+            var wrd = new MWord.Application();
+            wrd.Visible = true;
+
             MWord.Document doc;
             try
             {
@@ -166,6 +168,7 @@ namespace hotel
         {
             int n = System.Convert.ToInt32(File.ReadAllLines(System.AppDomain.CurrentDomain.BaseDirectory + "\\templates\\num")[0]);
             var wrd = new MWord.Application();
+            wrd.Visible = true;
             MWord.Document doc;
             try
             {
@@ -271,6 +274,7 @@ namespace hotel
                 using (var db = new SQLite.SQLiteConnection("database.db"))
                 {
                     db.CreateTable<RoomInformation>();
+                    if(room.Person != null)
                     db.Insert(new RoomInformation(true)
                     {
                         Date = DateTime.Now,
@@ -278,8 +282,20 @@ namespace hotel
                         Num = room.Id,
                         Name = room.Person.ToString(),
                         Pillows = room.Pillows,
-                        Status = room.Status == Room.stat.FREE ? "Свободен" : "Занят"
+                        Status = room.Status == Room.stat.USE ? "Занят" : "Свободен"
                     });
+                    else
+                    {
+                        db.Insert(new RoomInformation(true)
+                        {
+                            Date = DateTime.Now,
+                            Debt = room.Debt,
+                            Num = room.Id,
+                            Name = "-",
+                            Pillows = room.Pillows,
+                            Status = room.Status == Room.stat.USE ? "Занят" : "Свободен"
+                        });
+                    }
                 }
             }
             catch (Exception ex)
@@ -725,9 +741,6 @@ namespace hotel
         {
             if ((date_out - date_in).Days < 0 || (DateTime.Today-date_in).Days > 0) throw new WrongData();
             if (!MayRes(new TimeRange(date_in, date_out))) throw new InterTime();
-                //if (DateTime.Today == date_in)
-                    //this.cls.Background = new SolidColorBrush(Colors.Orange);
-                
                 this.res.Add(new TimeRange(date_in, date_out));
                 this._date.Add(date_in, date_out);
             if(this.st_room == stat.FREE)
@@ -744,7 +757,7 @@ namespace hotel
 
         public void PayRoom(int sum)
         {
-            if (sum <= 0)
+            if (sum < 0)
             {
                 MessageBox.Show("Некорректная сумма.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -769,7 +782,6 @@ namespace hotel
         public void CleanRoom(){
             if (this.is_dirty)
                 this.is_dirty = false;
-            serial(this);
         }
 
         public override string ToString()
@@ -872,7 +884,6 @@ namespace hotel
     {
 
         const string BASE = "base.dat";
-        const string CLBASE = "clients.dat";
         public Room[] rooms = new Room[9];
         public int st = 0;
         public List<Person> clients = new List<Person>();
@@ -901,27 +912,7 @@ namespace hotel
             saveBase(rooms, BASE);
             updateColor(rooms);
             DataBase.UpdateRoom(room);
-            //PostBase("http://basehotel.16mb.com/upload.php?id=2", "base.dat");
         }
-        //DEPRECATED
-        //public string PostBase(string url, string filename)
-        //{
-        //    WebClient client = new WebClient();
-        //    byte[] resp = client.UploadFile(url, filename);
-        //    return System.Text.Encoding.ASCII.GetString(resp);
-        //}
-
-        //public void DownloadBase(string url, string filename)
-        //{
-        //    WebClient client = new WebClient();
-        //    client.DownloadFile(url, filename);
-        //}
-
-        //public bool NeedReload(string url)
-        //{
-        //    WebClient client = new WebClient();
-        //    return client.DownloadString(url) == "1";
-        //}
               
         public void saveBase(Room[] rooms, string filename)
         {
@@ -967,19 +958,6 @@ namespace hotel
             }
         }
 
-        //public void doMagic(object sender, EventArgs e)
-        //{
-        //    if(NeedReload("http://basehotel.16mb.com/check.php?id=1")){
-        //        DownloadBase("http://basehotel.16mb.com/xyzzy/base.dat", "base.dat");
-        //        rooms = loadBaseRoom(); 
-        //        InitCls();
-        //        updateColor(rooms);
-        //    }
-        //    else{
-        //        MessageBox.Show("Нет изменений.");
-        //    }
-        //}
-
         public void HistoryReports(object sender, EventArgs e)
         {
             HistoryReport rep = new HistoryReport(rooms);
@@ -1018,6 +996,7 @@ namespace hotel
                 updateColor(rooms);                
             }
             this.clients = DataBase.CilentsLoad();
+            
 
         }
 
